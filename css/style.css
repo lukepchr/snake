@@ -1,0 +1,54 @@
+*{
+  font-family: helvetica;
+  color: #888;
+}
+
+body {
+  margin: 50px;
+  background: #111;
+}
+
+#overlay{
+  visibility: hidden;
+  position: fixed;
+  top: 200px;
+  margin: 0 auto;
+  text-align: center;
+  color: rgba(250,50,50,0.5);
+  width: 100%;
+  font-family: helvetica;
+  font-weight: 1000;
+  font-size: 4em;
+  text-shadow: 3px, 3px, rgba(30, 30, 30, 0.8);
+}
+#platform {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(20, 30px);
+  grid-template-rows: repeat(10, 30px);
+  width: 100%;
+  
+}
+.brick {
+  background-color: #444;
+
+  border: solid 1px #333;
+  font-size: 0.55em;
+}
+#scoreboard{
+  width: 568px;
+  background: #333;
+  margin: 0 auto;
+  padding: 1px 15px;
+  border: solid 1px #222;
+}
+p{
+  margin: 5px;
+}
+#number{
+
+  padding: 0px;
+  font-size: 1.5em;
+  
+}
