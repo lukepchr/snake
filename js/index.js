@@ -1,4 +1,4 @@
-// This is REALLY work in progress!
+// work in progress!
 
 // screen size as a matrix: x= 30, y = 10.
 // initial setup of the grey bricks so the game is ready.
@@ -113,7 +113,7 @@ function move() {
   if (snake[0][0] < 0) snake[0][0] = 19;
   if (snake[0][0] > 19) snake[0][0] = 0;
 
-  points();
+
   collide();
   change(snake[0], snakecolour);
   if (!gameover) change(snake.pop(), "#444");
@@ -129,6 +129,7 @@ function move() {
     bonustimer = 0;
     catchme = 10;
   }
+  points();
 } // lets the snake proceed.
 
 var gameTime = setInterval(move, speed); // this is the TIME itself.
