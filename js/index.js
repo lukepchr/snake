@@ -11,7 +11,7 @@ var catchme = 10;
 var pts = 0;
 var mpts = 0;
 var speed = 450;
-var gameover= false;
+var gameover = false;
 var lost; // coordinates for the tail,
 
 var output = [];
@@ -26,7 +26,6 @@ var change = (c, col) => {
   document.getElementById(c[0] + 1 + c[1] * 20).style.backgroundColor = col;
 };
 
-
 var snake = [[10, 7], [10, 8], [10, 9]];
 change(snake[0], snakecolour);
 change(snake[1], snakecolour);
@@ -37,13 +36,12 @@ var points = () => {
   document.getElementById("number").innerHTML = pts;
   mpts++;
   bonustimer++;
-  
+
   if (mpts > 5) {
     pts++;
-    speed-=4;
+    speed -= 4;
     mpts = 0;
   }
-
 
   if (bonusisthere) {
     catchme--;
@@ -53,7 +51,7 @@ var points = () => {
       pts -= 20;
       shout("missed it.");
       change([applex, appley], "#444");
-      applex, appley = null;
+      applex, (appley = null);
       bonusisthere = false;
       bonustimer = 0;
     }
@@ -61,37 +59,35 @@ var points = () => {
 
   // when the apple is about to disappear it starts blinking
   if (catchme < 5 && catchme > 0) {
-
-  setTimeout(function() { 
-        change([applex, appley], applecolour);
-       setTimeout(function() {  
-      change([applex, appley], "#444");
-        }, 180);
-  }, 70);
+    setTimeout(function() {
+      change([applex, appley], applecolour);
+      setTimeout(function() {
+        change([applex, appley], "#444");
+      }, 180);
+    }, 70);
   }
 }; // different functions regarding the score and apple control
 function shout(string, remain) {
   let banner = document.getElementById("overlay");
   banner.style.visibility = "visible";
   banner.innerHTML = string.toUpperCase();
-  
-  setTimeout(function(){
+
+  setTimeout(function() {
     banner.style.visibility = "hidden";
     setTimeout(function() {
       banner.style.visibility = "visible";
-         setTimeout(function() {
+      setTimeout(function() {
         banner.style.visibility = "hidden";
-      if(remain){
-        setTimeout(banner.style.visibility = "visible", 300);
-      }
-           
-         }, 300);
+        if (remain) {
+          setTimeout((banner.style.visibility = "visible"), 300);
+        }
+      }, 300);
     }, 300);
   }, 300);
-} 
+}
 
 // tells you stuff with huge red blinking letters
-function move() { 
+function move() {
   shiftx = snake[0][0];
   shifty = snake[0][1];
   switch (direction) {
@@ -120,10 +116,10 @@ function move() {
   points();
   collide();
   change(snake[0], snakecolour);
-  if(!gameover) change(snake.pop(), "#444");
+  if (!gameover) change(snake.pop(), "#444");
   // ate an apple.
-   if (applex == snake[0][0] && appley == snake[0][1]) {
-    snake.push(snake[snake.length-1]);
+  if (applex == snake[0][0] && appley == snake[0][1]) {
+    snake.push(snake[snake.length - 1]);
     change([applex, appley], "darkgreen");
     applex = null;
     appley = null;
@@ -133,12 +129,11 @@ function move() {
     bonustimer = 0;
     catchme = 10;
   }
-  
 } // lets the snake proceed.
 
 var gameTime = setInterval(move, speed); // this is the TIME itself.
 
-document.addEventListener("keydown", turning);// reads the keyboard arrows
+document.addEventListener("keydown", turning); // reads the keyboard arrows
 function turning(command) {
   // read the key code and let the head the right direction
   // just make sure no one tries reversing. No cheating!
@@ -162,45 +157,35 @@ let bonus = () => {
   catchme = 15;
 }; // deploy a new APPLE.
 var collide = () => {
-  
-  for(let i=1; i < snake.length; i++){
-    if(snake[i][0] == snake[0][0] && snake[i][1] == snake[0][1])
-      {
-        gameover= true;
-        change(snake[0], "orange");
-        clearInterval(gameTime);
-        change(snake[0], "orange");
-      
-      
-        shout("GAME OVER");
-        
-          setTimeout(function(){
+  for (let i = 1; i < snake.length; i++) {
+    if (snake[i][0] == snake[0][0] && snake[i][1] == snake[0][1]) {
+      gameover = true;
+      change(snake[0], "orange");
+      clearInterval(gameTime);
+      change(snake[0], "orange");
+
+      shout("GAME OVER");
+
+      setTimeout(function() {
+        change(snake[0], snakecolour);
+        shout(pts + " points!");
+        setTimeout(function() {
+          shout(pts + " points!", true);
+          change(snake[0], "orange");
+          setTimeout(function() {
+            change(snake[0], snakecolour);
+
+            setTimeout(function() {
               change(snake[0], snakecolour);
-              shout(pts+" points!");
-              setTimeout(function(){
-                  
-        
-                  shout(pts+" points!",true);
-                   change(snake[0], "orange");
-                setTimeout(function(){
-                  change(snake[0], snakecolour);
-                  
-                  setTimeout(function(){
-                    change(snake[0], snakecolour);
-                    setTimeout(function(){
-                    change(snake[0], "orange");
-                  },500);
-                  },500);
-                },500);
+              setTimeout(function() {
+                change(snake[0], "orange");
               }, 500);
-        
-          change([applex, appley], "#444");
             }, 500);
-      
-     
-      
+          }, 500);
+        }, 500);
+
+        change([applex, appley], "#444");
+      }, 500);
     }
-    
   }
-  
 }; //detects collisions
