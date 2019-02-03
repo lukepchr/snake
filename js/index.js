@@ -79,7 +79,7 @@ function shout(string, remain) {
       setTimeout(function() {
         banner.style.visibility = "hidden";
         if (remain) {
-          setTimeout((banner.style.visibility = "visible"), 300);
+          setTimeout(function(){banner.style.visibility = "visible"}, 300);
         }
       }, 300);
     }, 300);
