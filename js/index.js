@@ -182,7 +182,7 @@ let points = () => {
     if (speed > 200) {
       speed -= 5;
     }
-    mpts = 0;
+    mPts = 0;
   }
 
   if (bonusIsThere) {
