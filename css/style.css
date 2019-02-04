@@ -6,49 +6,67 @@
 body {
   position: relative;
   margin: 0 auto;
-  background: #111;
+  background: #16121C;
   width: 100%;
 }
 
 #overlay {
-  visibility: hidden;
+  padding: 0;
   position: absolute;
-  top: 50%;
-  margin: 0;
+  visibility: hidden;
+  display: block;
+  height: 250px;
   text-align: center;
-  color: rgba(250, 50, 50, 0.5);
+  line-height: 250px;
+  color: rgba(234, 189, 168, 0.5);
   width: 100%;
   font-family: helvetica;
   font-weight: 1000;
-  font-size: 4em;
-  text-shadow: 3px, 3px, rgba(30, 30, 30, 0.8);
+  font-size: 2.5em;
+  text-shadow: 3px 3px 3px rgba(0,0,0,0.7);
 }
 #platform {
-  margin-top: 50px;
+  margin: 0 auto;
   position: relative;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(20, 25px);
-  grid-template-rows: repeat(10, 25px);
-  width: 100%;
+  grid-template-columns: repeat(20, 28px);
+  grid-template-rows: repeat(10, 28px);
+  border: solid 1px #333;
+  margin-bottom: -2px;
+  background-color: #403551;
+
 }
 .brick {
-  background-color: #444;
-
-  border: solid 1px #333;
+  background-color: #403551;
+border-radius: 4px;
+  border: solid 1px #4A3E5E;
   font-size: 0.55em;
 }
 #scoreboard {
-  width: 468px;
-  background: #333;
+  width: 530px;
+  background: #1E1B23;
   margin: 0 auto;
   padding: 1px 15px;
-  border: solid 1px #222;
+  border: solid 1px #333;
+
 }
 p {
   margin: 5px;
+  color: #A0B2A6;
 }
 #number {
   padding: 0px;
   font-size: 1.5em;
+}
+
+#wrap{
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+
 }
